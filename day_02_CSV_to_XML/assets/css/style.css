@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900&display=swap');
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #FFF5EC;
+}
+
+.extractorForm{
+    position: absolute;
+    width: 300px;
+    /* height: 40% ; */
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: white;
+    text-align: center;
+    padding:  15px;  
+    /* border-radius: 10px; */
+    box-shadow: 2px 3px 16px 5px #ffd7ba4a; ;
+}
+
+.extractorForm .text1{
+   font-size: 24px;
+   color: #6E0014;
+}
+
+input[type="file"]{
+    opacity: 0; 
+    position: absolute;
+    top: 103px;
+    left: 113px;
+    /* display: none; */
+}
+
+.uploadbtn{
+    display: inline-block;
+    margin : 25px 0 0 0;
+    border: 1px dashed #6E0014;
+    cursor: pointer;
+    /* border-radius: 5px; */
+    background-color:  #FFF5EC ;
+    font-size: 16px;
+    font-weight: bold;
+    color: #6E0014;
+    background: url('../img/upload_icon.svg');
+    background-color:  #FFF5EC;
+    /* background-position: right; */
+    background-position: 133px 11px;
+    background-repeat: no-repeat;
+    width: 160px;
+    padding: 14px 46px 13px 6px;
+}
+
+.downloadbtn{
+    /* background-color:  #FFF5EC; */
+    color: #6E0014;
+    margin: 10px ;
+    font-family: 'Nunito Sans', sans-serif;
+    /* border-radius: 5px; */
+    border: 1px solid #6E0014;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 38px 0 10px 0;
+  }
+
+  .downloadbtn{
+    background: url('../img/download_icon.svg');
+    /* background-color:  #FFF5EC; */
+    background-position: 133px 11px;
+    /* background-position: right; */
+    background-repeat: no-repeat;
+    width: 160px;
+    padding: 14px 20px 13px 0px;
+  }
+  .poweredBy{
+    position: absolute;
+    left: 50%;
+    bottom: 2%;
+    transform: translate(-50%, -50%);
+  }
