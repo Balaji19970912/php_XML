@@ -95,11 +95,17 @@ for ($i = 0; $i < count($arrayActivity); $i++) {
     <Action Name="Name Activity" ValidParameterValues="true">
     <Parameter>
     <Name>Activity</Name>
-    <Value>' . $arrayActivity[$i] . '</Value>
+    <Value>'.$arrayActivity[$i].'</Value>
     </Parameter>
     </Action>
     <WindowImage/>
     <ObjectImage/>
+    <StepDataCollection>
+        <StepData>
+            <Name>StepNamedActivity</Name>
+            <DataObject>'.$arrayActivity[$i].'</DataObject>
+        </StepData>
+    </StepDataCollection>
     </Step>';
 }
 $finalRes = $finalRes . $stepsLoopString . '
@@ -118,5 +124,5 @@ header('Content-Transfer-Encoding: binary');
 readfile($fileName);
 
 unlink($fileName);
-//code push
+
 ?>
