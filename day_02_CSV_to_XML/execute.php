@@ -13,7 +13,7 @@ $info = pathinfo($_FILES['fileUpload']['name']);
 // die();
 
 if(strtolower($info['extension']) != "csv") {
-    echo "<script>alert('Only csv file needs to be uploaded!'); location.href='/extractor_qualesce/';</script>";
+    echo "<script>alert('Only csv file needs to be uploaded!'); location.href='/UIPath extractor/';</script>";
     die();
 }
 
@@ -28,12 +28,18 @@ $arrayActivity = [];
 $timeZoneArray = [];
 $timeStampArray = [];
 
+$CapturedByUserDomainName;
+
 $count = 0;
 
 while (!feof($fp)) {
     $res = fgetcsv($fp)[6];
     $timeZone = fgetcsv($fp)[0];
     $strPosVal = strpos($res, ".xaml");
+    
+    if(!empty(fgetcsv($fp)[4])) {
+        $CapturedByUserDomainName = fgetcsv($fp)[4];
+    }
 
     if (!empty($strPosVal)) {
         $finalRes = explode(".xaml", $res);
@@ -57,7 +63,7 @@ while (!feof($fp)) {
 
 
 if($count == 0) {
-    echo "<script>alert('Invalid Format CSV!'); location.href='/extractor_qualesce/';</script>";
+    echo "<script>alert('Invalid Format CSV!'); location.href='/UIPath extractor/';</script>";
     die();
 }
 
@@ -67,10 +73,10 @@ if($count == 0) {
 $capturedByUserName = "Qualesce Extractor";
 $finalRes = '<?xml version="1.0" encoding="utf-8"?>
     <CaptureOnce xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="V2.0" captureType="Standalone" captureVersion="12.0.2201.20" modelVersion="3">
-        <CapturedByUserName>' . $capturedByUserName . '</CapturedByUserName>
-        <CapturedByUserDomainName>GOTHAMCITY</CapturedByUserDomainName>
-        <CaptureName>OTC_CreateSalesOrder</CaptureName>
-        <CaptureDescription>OTC_CreateSalesOrder</CaptureDescription>
+        <CapturedByUserName>'.$capturedByUserName.'</CapturedByUserName>
+        <CapturedByUserDomainName>'.$CapturedByUserDomainName.'</CapturedByUserDomainName>
+        <CaptureName>'.$info['filename'].'</CaptureName>
+        <CaptureDescription>'.$info['filename'].'</CaptureDescription>
         <CaptureGuid>d97ac205-c300-4652-98d8-e184fbd00eec</CaptureGuid>
         <CapturedInterfaces>
             <CapturedInterface>System</CapturedInterface>
