@@ -1,7 +1,25 @@
 <?php
 // $csv = 'robot-logs-2023-08-25-06-55-35-633-53566.csv';
-$csv = 'readDataCSV/Purchase Order Task Logs.csv';
-$fp = fopen($csv, "r");
+// $csv = 'readDataCSV/Purchase Order Task Logs.csv';
+
+// echo "<pre>";
+// print_r($_FILES['fileUpload']);
+$files = $_FILES['fileUpload'];
+
+$info = pathinfo($_FILES['fileUpload']['name']);
+// echo "<pre>";
+// print_r($info);
+
+// die();
+
+if(strtolower($info['extension']) != "csv") {
+    echo "<script>alert('Only csv file needs to be uploaded!'); location.href='/phpFiles/phpRead/';</script>";
+    die();
+}
+
+// die();
+
+$fp = fopen($files['tmp_name'], "r");
 
 
 error_reporting(0);
@@ -81,7 +99,7 @@ $finalRes = $finalRes . $stepsLoopString . '
 
 // echo $finalRes;
 
-$fileName = "checking" . ".xml";
+$fileName =  $info['filename'].".xml";
 $fp = fopen($fileName, "w+");
 file_put_contents($fileName, $finalRes);
 
